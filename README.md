@@ -163,14 +163,13 @@ cd /tmp
 wget https://github.com/glpi-project/glpi/releases/download/10.0.15/glpi-10.0.15.tgz
 tar -zxvf glpi-10.0.15.tgz
 mv glpi /var/www/html
+```
+
+### Ajustando dono da pasta glpi
+```sh
 sudo chown www-data:www-data /var/www/html/glpi/* -Rf
 sudo find /var/www/html/glpi -type d -exec chmod 755 {} \;
 sudo find /var/www/html/glpi -type f -exec chmod 644 {} \;
-```
-
-### Ajustando dono da pasta reports
-```sh
-chown -R www-data:www-data /var/lib/ocsinventory-reports/;
 systemctl restart apache2;
 systemctl enable apache2;
 ```
