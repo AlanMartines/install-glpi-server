@@ -169,6 +169,12 @@ systemctl restart apache2;
 systemctl enable apache2;
 ```
 
+### Instalação do GLPI via web
+
+```sh
+http://<seu_ip>/glpi/install/install.php
+```
+
 ### Instalação do GLPI via console
 
 > A instalação via console é extremamente simples e rápida, caso o comando glpi-console não funcione, chame o php e aponte o diretório do console, seguindo o exemplo do segundo comando abaixo.
@@ -180,4 +186,11 @@ php /var/www/html/glpi/bin/console glpi:database:install -Lpt_BR -H'localhost' -
 
 > Em caso de erro, cheque as dependências com o comando abaixo para resolver e prosseguir.
 
+```sh
+glpi-console glpi:system:check_requirements
+php /var/www/html/glpi/bin/console glpi:system:check_requirements
+```
+![image](https://github.com/user-attachments/assets/b5fe5005-5716-40d1-9856-ce6616e99b88)
+
+>Pronto, seu GLPI foi instalado corretamente e você já pode começar a utilizá-lo. Acesse via web pelo IP ou DNS que configurou e sucesso!
 
