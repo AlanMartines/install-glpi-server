@@ -27,7 +27,7 @@ sudo apt update;
 ### Debian
 ```sh
 sudo apt update;
-sudo apt -y install lsb-release apt-transport-https ca-certificates;
+sudo apt install lsb-release apt-transport-https ca-certificates;
 sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg;
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list;
 sudo apt update;
@@ -58,7 +58,6 @@ php8.3-apcu php8.3-ldap php8.3-snmp php8.3-pgsql;
 ```sh
 sudo a2enmod proxy_fcgi setenvif rewrite;
 sudo systemctl restart apache2;
-sudo cpan install XML::Entities Apache2::SOAP Net::IP Apache::DBI Mojolicious Switch Plack::Handler Archive::Zip;
 ```
 
 ### Instalar MySQL
@@ -69,7 +68,7 @@ wget https://repo.mysql.com//mysql-apt-config_0.8.29-1_all.deb;
 sudo apt install ./mysql-apt-config_0.8.29-1_all.deb -y;
 sudo dpkg-reconfigure mysql-apt-config;
 sudo apt update;
-sudo apt install mysql-server;
+sudo apt install -y mysql-server;
 ```
 
 ### Instalação segura do Mysql
@@ -98,12 +97,6 @@ QUIT;
 
 
 ### Ajustes no php.ini
-```
-# Parâmetros a serem alterados
-short_open_tag ==> On    linea +/- 187
-post_max_size ==> 1024M  linea +/- 694
-upload_max_filesize ==> 256M linea +/- 846
-```
 
 ### PHP 7.4
 ```sh
