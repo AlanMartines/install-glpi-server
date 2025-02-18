@@ -68,7 +68,11 @@ sudo apt update;
 sudo apt install mysql-server;
 ```
 
-### mysql_secure_installation
+### Instalação segura do Mysql
+
+```sh
+mysql_secure_installation
+```
 
 ![image](https://user-images.githubusercontent.com/10979090/208107935-70eadcf0-aa37-47ad-87a7-d43bee8a39d1.png)
 
@@ -151,13 +155,13 @@ systemctl restart php8.3-fpm;
 
 ### Baixar e instalar GLPI
 ```sh
-wget https://github.com/OCSInventory-NG/OCSInventory-ocsreports/releases/download/2.12.3/OCSNG_UNIX_SERVER-2.12.3.tar.gz
-
-tar xvf OCSNG_UNIX_SERVER-2.12.3.tar.gz
-
-cd OCSNG_UNIX_SERVER-2.12.3
-
-sudo ./setup.sh
+cd /tmp
+wget https://github.com/glpi-project/glpi/releases/download/10.0.15/glpi-10.0.15.tgz
+tar -zxvf glpi-10.0.15.tgz
+mv glpi /var/www/html
+sudo chown www-data:www-data /var/www/html/glpi/* -Rf
+sudo find /var/www/html/glpi -type d -exec chmod 755 {} \;
+sudo find /var/www/html/glpi -type f -exec chmod 644 {} \;
 ```
 
 ### Ajustando dono da pasta reports
