@@ -80,13 +80,15 @@ mysql_secure_installation
 
 ![image](https://user-images.githubusercontent.com/10979090/208107935-70eadcf0-aa37-47ad-87a7-d43bee8a39d1.png)
 
-### Criando o banco de dados ocs no MySQL
+### Criando o banco de dados glpi10 no MySQL
 ```sh
 mysql -u root -p
 
-CREATE DATABASE ocsdb;
+CREATE DATABASE glpi10 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-GRANT ALL PRIVILEGES ON ocsdb.* TO 'ocsuser'@'localhost' IDENTIFIED BY 'ocspassword';
+CREATE USER 'glpi10'@'%' IDENTIFIED BY 'glpi10@135';
+
+GRANT ALL PRIVILEGES ON `glpi10`.* TO 'glpi10'@'%';
 
 FLUSH PRIVILEGES;
 
