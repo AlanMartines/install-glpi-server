@@ -1,6 +1,10 @@
 # Install GLPI Server on Debian/Ubuntu
 
+https://www.arthurschaefer.com.br/2022/02/como-instalar-o-glpi-10-no-debian-11/
 
+https://dgez.com.br/docs/instalacao-glpi-10-no-debian-12/
+
+https://verdanadesk.com/como-instalar-glpi-10/
 
 ## Instalando Dependencias Necessárias
 
