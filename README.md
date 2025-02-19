@@ -1,13 +1,5 @@
 # Install GLPI Server on Debian/Ubuntu
 
-https://www.arthurschaefer.com.br/2022/02/como-instalar-o-glpi-10-no-debian-11/
-
-https://dgez.com.br/docs/instalacao-glpi-10-no-debian-12/
-
-https://verdanadesk.com/como-instalar-glpi-10/
-
-https://www.reddit.com/r/glpi/comments/13e04jl/1007_warning_web_server_root_directory/?tl=pt-br
-
 ## Instalando Dependencias Necessárias
 
 ```sh
@@ -98,7 +90,7 @@ QUIT;
 ![image](https://user-images.githubusercontent.com/10979090/208531417-a62e7a78-8426-4b8d-bda1-4fddd92034d7.png)
 
 
-### Ajustes no php.ini
+## Ajustes no php.ini
 
 ### PHP 7.4
 ```sh
@@ -202,11 +194,11 @@ php /var/www/html/glpi/bin/console glpi:system:check_requirements
 
 >Pronto, seu GLPI foi instalado corretamente e você já pode começar a utilizá-lo. Acesse via web pelo IP ou DNS que configurou e sucesso!
 
-### Configuração segura do webroot no GLPI - a "famosa" pasta public
+## Configuração segura do webroot no GLPI - a "famosa" pasta public
 
 >Nas versões mais recentes do GLPI 10.0.7 em diante, existe uma recomendação de segurança para configurarmos o diretório raiz do sistema, levando em consideração uma pasta public para "garantir que arquivos não públicos não possam ser acessados".
 
-#### Crie ou edite o arquivo .htacess
+### Crie ou edite o arquivo .htacess
 ```sh
 sudo vim /var/www/html/glpi/.htaccess
 ```
@@ -221,3 +213,15 @@ sudo vim /var/www/html/glpi/public/.htaccess
     RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
 ```
+
+# Créditos
+
+Este tutorial foi criado com base nos seguintes tutoriais a baixo:
+
+https://www.arthurschaefer.com.br/2022/02/como-instalar-o-glpi-10-no-debian-11/
+
+https://dgez.com.br/docs/instalacao-glpi-10-no-debian-12/
+
+https://verdanadesk.com/como-instalar-glpi-10/
+
+https://www.reddit.com/r/glpi/comments/13e04jl/1007_warning_web_server_root_directory/?tl=pt-br
