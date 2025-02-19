@@ -155,8 +155,8 @@ systemctl restart php8.3-fpm;
 ### Baixar e instalar GLPI
 ```sh
 cd /tmp
-wget https://github.com/glpi-project/glpi/releases/download/10.0.15/glpi-10.0.15.tgz
-tar -zxvf glpi-10.0.15.tgz
+wget https://github.com/glpi-project/glpi/releases/download/10.0.18/glpi-10.0.18.tgz
+tar -zxvf glpi-10.0.18.tgz
 mv glpi /var/www/html
 ```
 
