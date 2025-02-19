@@ -6,6 +6,8 @@ https://dgez.com.br/docs/instalacao-glpi-10-no-debian-12/
 
 https://verdanadesk.com/como-instalar-glpi-10/
 
+https://www.reddit.com/r/glpi/comments/13e04jl/1007_warning_web_server_root_directory/?tl=pt-br
+
 ## Instalando Dependencias Necessárias
 
 ```sh
