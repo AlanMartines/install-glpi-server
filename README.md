@@ -1,4 +1,10 @@
-# Install GLPI Server on Debian/Ubuntu
+Instalação do GLPI Server no Debian/Ubuntu
+==========================================
+
+Introdução
+----------
+
+>Este guia fornece um passo a passo para instalar o **GLPI (Gestionnaire Libre de Parc Informatique)**, um sistema open-source de gerenciamento de ativos e help desk, em servidores **Debian** e **Ubuntu**. O tutorial inclui a instalação de dependências, banco de dados MySQL, configuração do PHP e ajustes de segurança.
 
 ## Instalando Dependencias Necessárias
 
