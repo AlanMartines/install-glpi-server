@@ -64,8 +64,8 @@ sudo systemctl restart apache2;
 ```sh
 sudo apt update;
 sudo apt upgrade -y;
-wget https://repo.mysql.com//mysql-apt-config_0.8.29-1_all.deb;
-sudo apt install ./mysql-apt-config_0.8.29-1_all.deb -y;
+wget https://dev.mysql.com/get/mysql-apt-config_$(wget -qO- https://dev.mysql.com/downloads/repo/apt/ | grep -oP 'mysql-apt-config_\K[0-9]+.[0-9]+.[0-9]+-[0-9]+(?=_all.deb)' | head -1)_all.deb;
+sudo apt install ./mysql-apt-config_*.deb -y;
 sudo dpkg-reconfigure mysql-apt-config;
 sudo apt update;
 sudo apt install -y mysql-server;
