@@ -85,9 +85,9 @@ mysql -u root -p
 
 CREATE DATABASE glpi10 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-CREATE USER 'glpi10'@'%' IDENTIFIED BY 'glpi10@135';
+CREATE USER 'glpi10'@'localhost' IDENTIFIED BY 'glpi10@135';
 
-GRANT ALL PRIVILEGES ON `glpi10`.* TO 'glpi10'@'%';
+GRANT ALL PRIVILEGES ON `glpi10`.* TO 'glpi10'@'localhost';
 
 FLUSH PRIVILEGES;
 
