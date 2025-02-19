@@ -194,3 +194,22 @@ php /var/www/html/glpi/bin/console glpi:system:check_requirements
 
 >Pronto, seu GLPI foi instalado corretamente e você já pode começar a utilizá-lo. Acesse via web pelo IP ou DNS que configurou e sucesso!
 
+### Configuração segura do webroot no GLPI - a "famosa" pasta public
+
+>Nas versões mais recentes do GLPI 10.0.7 em diante, existe uma recomendação de segurança para configurarmos o diretório raiz do sistema, levando em consideração uma pasta public para "garantir que arquivos não públicos não possam ser acessados".
+
+#### Crie ou edite o arquivo .htacess
+```sh
+sudo vim /var/www/html/glpi/.htaccess
+```
+```sh
+sudo vim /var/www/html/glpi/public/.htaccess 
+```
+```sh
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+```
