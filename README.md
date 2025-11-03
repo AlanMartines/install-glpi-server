@@ -163,14 +163,14 @@ systemctl restart php8.3-fpm;
 cd /tmp
 wget https://github.com/glpi-project/glpi/releases/download/10.0.18/glpi-10.0.18.tgz
 tar -zxvf glpi-10.0.18.tgz
-mv glpi /var/www/html
+mv glpi /var/www
 ```
 
 ### Ajustando dono da pasta glpi
 ```sh
-sudo chown www-data:www-data /var/www/html/glpi/* -Rf
-sudo find /var/www/html/glpi -type d -exec chmod 755 {} \;
-sudo find /var/www/html/glpi -type f -exec chmod 644 {} \;
+sudo chown www-data:www-data /var/www/glpi/* -Rf
+sudo find /var/www/glpi -type d -exec chmod 755 {} \;
+sudo find /var/www/glpi -type f -exec chmod 644 {} \;
 systemctl restart apache2;
 systemctl enable apache2;
 ```
@@ -178,7 +178,7 @@ systemctl enable apache2;
 ### Instalação do GLPI via web
 
 ```sh
-http://<seu_ip>/glpi/install/install.php
+http://<seu_ip>/install/install.php
 ```
 
 ### Instalação do GLPI via console
@@ -187,14 +187,14 @@ http://<seu_ip>/glpi/install/install.php
 
 ```sh
 glpi-console glpi:database:install -Lpt_BR -H'localhost' -d'nome do banco de dados' -u'nome do usuário' -p'senha' --no-telemetry --force -n
-php /var/www/html/glpi/bin/console glpi:database:install -Lpt_BR -H'localhost' -d'nome do banco de dados' -u'nome do usuário' -p'senha' --no-telemetry --force –n
+php /var/www/glpi/bin/console glpi:database:install -Lpt_BR -H'localhost' -d'nome do banco de dados' -u'nome do usuário' -p'senha' --no-telemetry --force –n
 ```
 
 > Em caso de erro, cheque as dependências com o comando abaixo para resolver e prosseguir.
 
 ```sh
 glpi-console glpi:system:check_requirements
-php /var/www/html/glpi/bin/console glpi:system:check_requirements
+php /var/www/glpi/bin/console glpi:system:check_requirements
 ```
 ![image](https://github.com/user-attachments/assets/b5fe5005-5716-40d1-9856-ce6616e99b88)
 
@@ -205,18 +205,38 @@ php /var/www/html/glpi/bin/console glpi:system:check_requirements
 >Nas versões mais recentes do GLPI 10.0.7 em diante, existe uma recomendação de segurança para configurarmos o diretório raiz do sistema, levando em consideração uma pasta public para "garantir que arquivos não públicos não possam ser acessados".
 
 ### Crie ou edite o arquivo .htacess
-```sh
-sudo vim /var/www/html/glpi/.htaccess
+**O arquivo `.htaccess` no diretório `glpi` do GLPI:**
+
+```bash
+sudo nano /var/www/glpi/.htaccess
 ```
-```sh
-sudo vim /var/www/html/glpi/public/.htaccess 
-```
-```sh
+
+Adicione o seguinte conteúdo:
+
+```apache
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php [QSA,L]
+   RewriteEngine On
+   RewriteBase /
+   RewriteEngine On
+   RewriteCond %{REQUEST_URI} !^/public
+   RewriteRule ^(.*)$ public/index.php [QSA,L]
+</IfModule>
+```
+
+**O arquivo `.htaccess` no diretório `public` do GLPI:**
+
+```bash
+sudo nano /var/www/glpi/public/.htaccess
+```
+
+Adicione o seguinte conteúdo:
+
+```apache
+<IfModule mod_rewrite.c>
+   RewriteEngine On
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
 ```
 
